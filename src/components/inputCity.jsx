@@ -30,7 +30,9 @@ const InputCity = () => {
                     if (foundCity) {
                         let letter = foundCity.name[foundCity.name.length - 1]
                         letter = letter.toUpperCase()
-                        let newCity = cities.find(el => el.name[0] === letter)
+                        let letterMas = cities.filter(el => el.name[0] === letter)
+                        let random = Math.floor(Math.random() * letterMas.length)
+                        let newCity = letterMas[random]
 
 
 
