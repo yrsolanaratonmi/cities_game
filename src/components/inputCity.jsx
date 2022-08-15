@@ -7,6 +7,8 @@ const InputCity = () => {
 
     let foundCity
 
+    let [lastLetter, setLastLetter] = useState(initialCity[initialCity.length - 1])
+
 
 
 
@@ -20,8 +22,18 @@ const InputCity = () => {
         <>
             <input ref={input}/>
             <button onClick={() => {
-                if (input.current.value[0] !== initialCity[initialCity.length -1].toUpperCase()) {alert ('ты охуел')} else {
-                    foundCity = cities.find(el => el.name === input.current.value)
+
+                setLastLetter(initialCity[initialCity.length - 1])
+
+                if (lastLetter === 'ь' || lastLetter === 'ъ' || lastLetter === 'ы') {
+
+                   setLastLetter(initialCity[initialCity.length - 2])
+                }
+                console.log(input.current.value[0].toLowerCase(), lastLetter)
+
+                if (input.current.value[0].toLowerCase() !== lastLetter) {alert ('ты охуел')} else {
+
+                    foundCity = cities.find(el => el.name.toLowerCase() === input.current.value.toLowerCase())
 
 
 
@@ -29,6 +41,7 @@ const InputCity = () => {
 
                     if (foundCity) {
                         let letter = foundCity.name[foundCity.name.length - 1]
+                        if (letter === 'ь' || letter === 'ъ' || letter === 'ы') {letter = foundCity.name[foundCity.name.length - 2]}
                         letter = letter.toUpperCase()
                         let letterMas = cities.filter(el => el.name[0] === letter)
                         let random = Math.floor(Math.random() * letterMas.length)
@@ -47,6 +60,7 @@ const InputCity = () => {
             }}>искать</button>
 
 <div>{`Город : ${initialCity} ` }</div>
+            <div>{`Тебе на : ${lastLetter.toUpperCase()} ` }</div>
 
         </>
     )
