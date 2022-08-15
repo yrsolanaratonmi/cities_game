@@ -29,7 +29,6 @@ const InputCity = () => {
 
                    setLastLetter(initialCity[initialCity.length - 2])
                 }
-                console.log(input.current.value[0].toLowerCase(), lastLetter)
 
                 if (input.current.value[0].toLowerCase() !== lastLetter) {alert ('ты охуел')} else {
 
@@ -50,6 +49,9 @@ const InputCity = () => {
 
 
                         setInitialCity(newCity.name)
+                        if (newCity.name[newCity.name.length - 1] === 'ъ' || newCity.name[newCity.name.length - 1] === 'ь' || newCity.name[newCity.name.length - 1] === 'ы') {
+                            setLastLetter(newCity.name[newCity.name.length - 2])
+                        } else {setLastLetter(newCity.name[newCity.name.length - 1])}
                         cities.splice(cities.indexOf(newCity), 1)
                         cities.splice(cities.indexOf(foundCity), 1)
 
