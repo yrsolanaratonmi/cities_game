@@ -1,5 +1,6 @@
 import cities from '../cities/cities.json'
-import {createRef, useEffect, useRef, useState} from "react";
+import {createRef, useState} from "react";
+import styles from '../styles/inputCity.module.css'
 
 const InputCity = () => {
 
@@ -7,21 +8,20 @@ const InputCity = () => {
 
     let foundCity
 
+    let [error, setError] = useState('')
+
     let [lastLetter, setLastLetter] = useState(initialCity[initialCity.length - 1])
-
-
-
-
-
-
-
-
-
+    
     let input = createRef()
     return (
-        <>
-            <input ref={input}/>
-            <button onClick={() => {
+        <div className={styles.div}>
+          <input className={styles.input} ref={input}/>
+
+
+
+
+
+            <button className={styles.button} onClick={() => {
 
                 setLastLetter(initialCity[initialCity.length - 1])
 
@@ -30,7 +30,7 @@ const InputCity = () => {
                    setLastLetter(initialCity[initialCity.length - 2])
                 }
 
-                if (input.current.value[0].toLowerCase() !== lastLetter) {alert ('ты охуел')} else {
+                if (input.current.value[0].toLowerCase() !== lastLetter) {setError ('Неправильная буква')} else {
 
                     foundCity = cities.find(el => el.name.toLowerCase() === input.current.value.toLowerCase())
 
@@ -48,23 +48,26 @@ const InputCity = () => {
 
 
 
+
                         setInitialCity(newCity.name)
                         if (newCity.name[newCity.name.length - 1] === 'ъ' || newCity.name[newCity.name.length - 1] === 'ь' || newCity.name[newCity.name.length - 1] === 'ы') {
                             setLastLetter(newCity.name[newCity.name.length - 2])
                         } else {setLastLetter(newCity.name[newCity.name.length - 1])}
                         cities.splice(cities.indexOf(newCity), 1)
                         cities.splice(cities.indexOf(foundCity), 1)
+                        setError('')
 
 
 
-                    } else alert('город не найден / уже был')
+                    } else setError('Город не найден / уже был')
                 }
-            }}>искать</button>
+            }}> > </button>
 
-<div>{`Город : ${initialCity} ` }</div>
-            <div>{`Тебе на : ${lastLetter.toUpperCase()} ` }</div>
+<div className={styles.text}>{`Город : ${initialCity} ` }</div>
+            <div className={styles.text}>{`Тебе на : ${lastLetter.toUpperCase()} ` }</div>
+            <div className={styles.error}> {error} </div>
 
-        </>
+        </div>
     )
 }
 
