@@ -5,8 +5,9 @@
     font-family: 'Press Start 2P', cursive;
 }
 .input {
+    margin: 0 0 0 100px;
     font-size: 30px;
-    padding-top: 15%;
+    padding-top: 100px;
     font-family: 'Press Start 2P', cursive;
     border: none;
     border-bottom: 1px solid white;
@@ -15,6 +16,7 @@
     outline: none;
 }
 .button {
+    margin: 0 100px 0 0;
     font-family: 'Press Start 2P', cursive;
     font-size: 30px;
     padding-left: 20px;
@@ -24,11 +26,24 @@
 }
 .div {
     text-align: center;
+    background-color: black;
+    border-radius: 25px;
+    border: 1px solid #cc2222;
 
 }
 .error {
     color: red;
-    padding-top: 100px;
+    padding-top: 70px;
     font-size: 24px;
     font-family: 'Press Start 2P', cursive;
+
+}
+.undertext {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    font-size: 24px;
+    color : white;
+    font-family: 'Press Start 2P', cursive;
+    background-color: rgba(28,28,28,0);
+    border: none;
 }

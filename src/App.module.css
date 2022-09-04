@@ -1,13 +1,17 @@
-.background {
+
+.div {
+  background-color : black;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count {
+  color : white;
+  right: 20px;
+  bottom: 20px;
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: -1;
-  object-fit: cover;
-  height: 100%;
-  pointer-events: none;
-  filter: brightness(20%);
+  font-size: 24px;
+  font-family: 'Press Start 2P', cursive;
 }
