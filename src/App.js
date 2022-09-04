@@ -19,6 +19,7 @@ export const CounterFunc = createContext()
 
 function App() {
 
+
     const [count, setCount] = useState(0)
 
 
@@ -40,7 +41,7 @@ function App() {
               </Counter.Provider>
 
 
-              <div className={styles.count}>{`Городов отгадано : ${count}`}</div>
+              {window.location.pathname === '/' && <div className={styles.count}>{`Городов отгадано : ${count}`}</div>}
 
           </div>
 
